@@ -36,7 +36,6 @@
 .item .img{
     width: 270px;
     height: 200px;
-
     margin-top: -85%;
 
 }
@@ -61,9 +60,7 @@ footer{
     align-items: center;
 }
 
-.container-links a{
-    
-}
+
 
 .container-links span{
     margin: 0 2.5px 0 2.5px;
