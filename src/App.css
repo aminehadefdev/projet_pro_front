@@ -26,8 +26,19 @@
     margin-left: 10px;
     background-color: #e2e1e1;
 }
-.item img{
-    width: 250px;
+
+.item .img-btn{
+    width: 270px;
+    height: 200px;
+    position: relative;
+    z-index: 2;
+}
+.item .img{
+    width: 270px;
+    height: 200px;
+
+    margin-top: -85%;
+
 }
 
 .item p{
@@ -69,4 +80,5 @@ footer{
 
 .container-logo-sociaux img{
     width: 60px;
+    height: 60px;
 }

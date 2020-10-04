@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-
+//style={{backgroundImage: `url(/assets/images/BP.png)`}}
 function MainHome(){
     return(
-        <main className="container-fluid main">
+      <main className="container-fluid main">
         <div className="container">
           <div>
             <h2>QUI EST TORUS?</h2>
@@ -16,34 +16,51 @@ function MainHome(){
           </div>
         </div>
         <div className="container-tems">
-          <div className="item"> 
-            <img src="/assets/images/photo2.jpg" />
+          <div className="item">
             <div>
-              <p>Nous Sommes une plateform qui met en relation des entrepreneurs sociaux qui ont un projet impactant et qui on besoins de conseilles dans un domain.</p>
+              <img className="img-btn" src="/assets/images/BP.png" />
+              <img className="img" src="/assets/images/photo2.jpg" />
+            </div>
+            <div>
+              <p>Astride 29 ans</p>
+              <p>Developpeuse web</p>
+              <p>Inscrite en tant que mentor</p>
             </div>
           </div>
           <div className="item"> 
-            <img src="/assets/images/photo3.jpg" />
+            <img className="img-btn" src="/assets/images/BP.png" />
+            <img className="img" src="/assets/images/photo3.jpg" />
             <div>
-              <p>Nous Sommes une plateform qui met en relation des entrepreneurs sociaux qui ont un projet impactant et qui on besoins de conseilles dans un domain.</p>
+              <p>Mathieu 45 ans</p>
+              <p>Porteur de projet</p>
+              <p>Inscrit en tant que mentorer</p>
             </div>
           </div>
           <div className="item"> 
-            <img src="/assets/images/photo4.jpg" />
+            <img className="img-btn" src="/assets/images/BP.png" />
+            <img className="img" src="/assets/images/photo4.jpg" />
             <div>
-              <p>Nous Sommes une plateform qui met en relation des entrepreneurs sociaux qui ont un projet impactant et qui on besoins de conseilles dans un domain.</p>
+              <p>Adrian 33 ans</p>
+              <p>Cuisinier</p>
+              <p>Inscrit en tant que mentor</p>
+            </div>
+          </div>
+          <div className="item">
+            <img className="img-btn" src="/assets/images/BP.png" />
+            <img className="img" src="/assets/images/photo3.jpg" />
+            <div>
+              <p>Mathieu 45 ans</p>
+              <p>Porteur de projet</p>
+              <p>Inscrit en tant que mentorer</p>
             </div>
           </div>
           <div className="item"> 
-            <img src="/assets/images/photo2.jpg" />
+            <img className="img-btn" src="/assets/images/BP.png" />
+            <img className="img" src="/assets/images/photo4.jpg" />
             <div>
-              <p>Nous Sommes une plateform qui met en relation des entrepreneurs sociaux qui ont un projet impactant et qui on besoins de conseilles dans un domain.</p>
-            </div>
-          </div>
-          <div className="item"> 
-            <img src="/assets/images/photo3.jpg" />
-            <div>
-              <p>Nous Sommes une plateform qui met en relation des entrepreneurs sociaux qui ont un projet impactant et qui on besoins de conseilles dans un domain.</p>
+              <p>Adrian 33 ans</p>
+              <p>Cuisinier</p>
+              <p>Inscrit en tant que mentor</p>
             </div>
           </div>
         </div>

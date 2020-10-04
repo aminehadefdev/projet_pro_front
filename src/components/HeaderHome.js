@@ -15,13 +15,13 @@ function HeaderHome(){
 
     return(
         <header className="container-fluid header">
-            <nav class="navbar navbar-light bg-light container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img src="/assets/images/logo.png" width="60" height="60" class="d-inline-block align-top" alt="" />
+            <nav className="navbar navbar-light bg-light container-fluid">
+                <a className="navbar-brand" href="/">
+                    <img src="/assets/images/logo.png" width="60" height="60" className="d-inline-block align-top" alt="" />
                 </a>
                 <div>
-                    <button onClick={handleShowSignIn} type="button" class="btn btn-outline-dark btn-nav">SignIn</button>
-                    <button onClick={handleShowSignUP} type="button" class="btn btn-outline-dark btn-nav">SignUP</button>
+                    <button onClick={handleShowSignIn} type="button" className="btn btn-outline-dark btn-nav">SignIn</button>
+                    <button onClick={handleShowSignUP} type="button" className="btn btn-outline-dark btn-nav">SignUP</button>
                 </div>
             </nav>
             <Modal show={showSignIn} onHide={handleCloseSignIn}>
