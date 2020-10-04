@@ -25,29 +25,27 @@ function HeaderHome(){
                 </div>
             </nav>
             <Modal show={showSignIn} onHide={handleCloseSignIn}>
-            <Modal.Header closeButton>
-                <Modal.Title>SignIn</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <Form>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
-                </Form.Group>
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Enter Password" />
-                </Form.Group>
-                </Form>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseSignIn}>
-                Close
-                </Button>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Modal.Footer>
+                <Modal.Header closeButton>
+                    <Modal.Title>SignIn</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Enter Password" />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseSignIn}>Close</Button>
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Modal.Footer>
             </Modal>
             <Modal show={showSignUP} onHide={handleCloseSignUP}>
             <Modal.Header closeButton>
