@@ -28,10 +28,11 @@
 }
 
 .item .img-btn{
-    width: 270px;
+    width: 220px;
     height: 200px;
     position: relative;
     z-index: 2;
+    left: 28px;
 }
 .item .img{
     width: 270px;
