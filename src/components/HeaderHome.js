@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 
 import ModalSignUp from './ModalSignUp'
+import ModalSignIn from './ModalSignIn'
 
 function HeaderHome(){
     const [showSignUP, setShowSignUP] = useState(false);
@@ -12,14 +13,7 @@ function HeaderHome(){
     const handleCloseSignIn = () => setShowSignIn(false);
     const handleShowSignIn = () => setShowSignIn(true);
 
-    const [emailSignIn, setEmailSignIn] = useState("")
-    const [passwordSignIn, setPasswordSignIn] = useState("")
-
     return(
-
-
-
-
         <header className="container-fluid header">
             <nav className="navbar navbar-light bg-light container-fluid">
                 <a className="navbar-brand" href="/">
@@ -31,6 +25,7 @@ function HeaderHome(){
                 </div>
             </nav>
             <ModalSignUp showSignUP={showSignUP} handleCloseSignUP={handleCloseSignUP} />
+            <ModalSignIn showSignIn={showSignIn} handleCloseSignIn={handleCloseSignIn}  />
         </header>
     )
 }

@@ -1,24 +1,101 @@
 import React, {useState} from 'react';
+import axios from 'axios'
+import qs from 'querystring'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 
 
 function ModalSignUp(props){
 
-    const [firstnameSignUp, setFirstnameSignUp] = useState("")
-    const [lastnameSignUp, setLastnameSignUp] = useState("")
-    const [emailSignUp, setEmailSignUp] = useState("")
-    const [passwordSignUp, setPasswordSignUp] = useState("")
-    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("")
-    const [descriptionSignUp, setDescriptionSignUp] = useState("")
-    const [jobSignUp, setJobSignUp] = useState("")
-    const [roleSignUp, setRoleSignUp] = useState("")
+    const [firstnameSignUp, setFirstnameSignUp] = useState("mehdi")
+    const [errorFN, setErrorFN] = useState('')
+
+    const [lastnameSignUp, setLastnameSignUp] = useState("benslah")
+    const [errorLN, setErrorLN] = useState('')
+
+    const [emailSignUp, setEmailSignUp] = useState("mehdi@gmail.com")
+    const [errorEM, setErrorEM] = useState('')
+
+    const [passwordSignUp, setPasswordSignUp] = useState("Jesuisunpetitcon@0")
+    const [errorPW, setErrorPW] = useState('')
+
+    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Jesuisunpetitcon@0")
+    const [errorCPW, setCPW] = useState('')
+
+    const [descriptionSignUp, setDescriptionSignUp] = useState("je suis un petit con")
+    const [errorDSC, setErrorDSC] = useState('')
+
+    const [jobSignUp, setJobSignUp] = useState("petit con")
+    const [errorJb, setErrorJb] = useState('')
+
+    const [roleSignUp, setRoleSignUp] = useState("1")
+    const [errorRL, setErrorRl] = useState('')
+
+    const [errorUE, setErrorUE] = useState('')
+
+
+    const config = {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+    const handleSubmit = (event)=>{
+        event.preventDefault()
+        if(passwordSignUp != confirmePasswordSignUp){
+            setCPW('le champ password doit corespondre avec le champ comfirmpasswor!')
+            return false
+        }
+        var data = qs.stringify({
+                firstname: firstnameSignUp,
+                lastname: lastnameSignUp,
+                email: emailSignUp,
+                password: passwordSignUp,
+                description: descriptionSignUp,
+                job: jobSignUp,
+                role: roleSignUp,
+           });
+           var config = {
+             method: 'post',
+             url: 'http://localhost:8000/user/register',
+             headers: { 
+               'Content-Type': 'application/x-www-form-urlencoded'
+             },
+             data : data
+           };
+           
+           axios(config)
+           .then(function (response) {
+             console.log(JSON.stringify(response.data));
+           })
+           .catch(function (error) {
+                if(error.response.data.errors.includes("le firstname doit contenir que des lettre!")){setErrorFN("le firstname doit contenir que des lettre!")}
+                if(error.response.data.errors.includes("le champ firstname est obligatoire!")){setErrorFN("le champ firstname est obligatoire!")}
+
+                if(error.response.data.errors.includes("le champ lastname est obligatoire!")){setErrorLN("le champ lastname est obligatoire!")}
+                if(error.response.data.errors.includes("le lastname doit contenir que des lettre!")){setErrorLN("le lastname doit contenir que des lettre!")}
+
+                if(error.response.data.errors.includes("le champ email doit etre valide exemple: toto@gmail.com!")){setErrorEM("le champ email doit etre valide exemple: toto@gmail.com!")}
+                if(error.response.data.errors.includes("le champ email est obligatoire!")){setErrorEM("le champ email est obligatoire!")}
+
+                if(error.response.data.errors.includes("le champ password doit contenir au minimum 8 caracteres dont au moins une majuscule une minuscule et un caracter special!")){setErrorPW("le champ password doit contenir au minimum 8 caracteres dont au moins une majuscule une minuscule et un caracter special!")}
+                if(error.response.data.errors.includes("le champ password est obligatoire!")){setErrorPW("le champ password est obligatoire!")}
+
+                if(error.response.data.errors.includes("le champ description est obligatoire!")){setErrorDSC("le champ description est obligatoire!")}
+
+                if(error.response.data.errors.includes("le champ role est obligatoire!")){setErrorRl("le champ role est obligatoire!")}
+
+                if(error.response.data.errors.includes("le champ role est obligatoire!")){setErrorJb("le champ job est obligatoire!")}
+
+                if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
+           });
+    }
     return(
         <Modal show={props.showSignUP} onHide={props.handleCloseSignUP}>
             <Modal.Header closeButton>
                 <Modal.Title>SignUP</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={(event)=>{event.preventDefault()}}>
+                {errorUE != '' ? <div class="alert alert-danger" role="alert">{errorUE}</div>:null}
+                <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col>
                             <Form.Group controlId="Firstname">
@@ -29,6 +106,7 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="Enter Firstname"
                                 />
+                                {errorFN != '' ? <small style={{color: "red"}} id="emailHelp">{errorFN}</small>:null}
                             </Form.Group>
                         </Col>
                         <Col>
@@ -40,6 +118,7 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="Enter Lastname"
                                 />
+                                {errorLN != '' ? <small style={{color: "red"}} id="emailHelp">{errorLN}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -51,6 +130,7 @@ function ModalSignUp(props){
                             type="email"
                             placeholder="Enter Email"
                         />
+                        {errorEM != '' ? <small style={{color: "red"}} id="emailHelp">{errorEM}</small>:null}
                     </Form.Group>
                     <Row>
                         <Col>
@@ -62,6 +142,7 @@ function ModalSignUp(props){
                                     type="password"
                                     placeholder="Enter Password"
                                 />
+                                {errorPW != '' ? <small style={{color: "red"}} id="emailHelp">{errorPW}</small>:null}
                             </Form.Group>
                         </Col>
                         <Col>
@@ -73,6 +154,7 @@ function ModalSignUp(props){
                                     type="password"
                                     placeholder="ConfirmePassword"
                                 />
+                                {errorCPW != '' ? <small style={{color: "red"}} id="emailHelp">{errorCPW}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -85,6 +167,7 @@ function ModalSignUp(props){
                             as="textarea"
                             rows="3"
                         />
+                        {errorDSC != '' ? <small style={{color: "red"}} id="emailHelp">{errorDSC}</small>:null}
                     </Form.Group>
                     <Row>
                         <Col>
@@ -96,15 +179,17 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="job"
                                 />
+                                {errorJb != '' ? <small style={{color: "red"}} id="emailHelp">{errorJb}</small>:null}
                             </Form.Group>
                         </Col>
                         <Col>
                             <Form.Group controlId="Role">
                                 <Form.Label>Role</Form.Label>
-                                <Form.Control as="select">
-                                    <option>Mentor(e)</option>
-                                    <option>Mentoré(e)</option>
+                                <Form.Control onChange={(event)=>{setRoleSignUp(event.currentTarget.value)}} as="select">
+                                    <option value="1">Mentor(e)</option>
+                                    <option value="2">Mentoré(e)</option>
                                 </Form.Control>
+                                {errorRL != '' ? <small style={{color: "red"}} id="emailHelp">{errorRL}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>

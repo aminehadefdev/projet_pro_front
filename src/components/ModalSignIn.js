@@ -5,7 +5,7 @@ function ModalSignIn(props){
     const [emailSignIn, setEmailSignIn] = useState("")
     const [passwordSignIn, setPasswordSignIn] = useState("")
     return(
-        <Modal show={props.showSignIn} onHide={handleCloseSignIn}>
+        <Modal show={props.showSignIn} onHide={props.handleCloseSignIn}>
             <Modal.Header closeButton>
                 <Modal.Title>SignIn</Modal.Title>
             </Modal.Header>
@@ -30,7 +30,7 @@ function ModalSignIn(props){
                         />
                     </Form.Group>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={handleCloseSignIn}>Close</Button>
+                        <Button variant="secondary" onClick={props.handleCloseSignIn}>Close</Button>
                         <Button variant="primary"type="submit">Submit</Button>
                     </Modal.Footer>
                 </Form>
@@ -38,3 +38,5 @@ function ModalSignIn(props){
         </Modal>
     )
 }
+
+export default ModalSignIn;
