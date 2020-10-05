@@ -41,7 +41,6 @@ function Temoignage(props){
                     </Button>
                 </Modal.Footer>
             </Modal>
-
         </div>
     )
 }
