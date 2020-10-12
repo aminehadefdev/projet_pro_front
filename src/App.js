@@ -1,16 +1,18 @@
 import React, {useState} from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom"
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Footer from './components/Footer'
-import MainHome from './components/MainHome'
-import HeaderHome from './components/HeaderHome'
+import Home from './components/Home'
+import Profil from './components/Profil'
+
 function App() {
   return (
     <div>
-      <HeaderHome />
-      <MainHome />
-      <Footer />
+      <Router>
+        <Route path="/" exact component={Home} />
+        <Route path="/profil" exact component={Profil} />
+      </Router>
     </div>
   );
 }

@@ -80,3 +80,101 @@ footer{
     width: 60px;
     height: 60px;
 }
+
+.container-mentor{
+    margin-top: 30px;
+}
+
+.container-mentor .item{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-mentor img{
+    width: 100px;
+    height: 90px;
+
+    border-radius: 100%;
+}
+
+.sideBar{
+    width: 0vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+}
+.iconSideBar{
+    position: relative;
+    right: 0vw;
+}
+
+.animVisibleIconeSideBar{
+    animation-duration: .6s;
+    animation-name: animVisibleIconeSideBar;
+    animation-fill-mode: both;
+}
+
+@keyframes animVisibleIconeSideBar{
+    from{
+        right: 0vw;
+    }to{
+        right: 25vw;
+    }
+}
+
+.animHiddenIconeSideBar{
+    animation-duration: .6s;
+    animation-name: animHiddenIconeSideBar;
+    animation-fill-mode: both;
+}
+
+@keyframes animHiddenIconeSideBar{
+    from{
+        right: 25vw;
+    }to{
+        right: 0vw;
+    }
+}
+
+.animVisibleSideBar{
+    animation-duration: .6s;
+    animation-name: animVisibleSideBar;
+    animation-fill-mode: both;
+}
+
+@keyframes animVisibleSideBar{
+    from{
+        width: 0vw;
+    }to{
+        width: 30vw;
+    }
+}
+
+.animHiddenSideBar{
+    animation-duration: .6s;
+    animation-name: animHiddenSideBar;
+    animation-fill-mode: both;
+}
+
+@keyframes animHiddenSideBar{
+    from{
+        width: 30vw;
+    }to{
+        width: 0vw;
+    }
+}
+
+.burn{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #b2b2b26e;
+}
+.burn{
+    background-color: #b2b2b26e!important;
+}

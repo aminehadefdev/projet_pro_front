@@ -6,25 +6,25 @@ import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 
 function ModalSignUp(props){
 
-    const [firstnameSignUp, setFirstnameSignUp] = useState("mehdi")
+    const [firstnameSignUp, setFirstnameSignUp] = useState("amine")
     const [errorFN, setErrorFN] = useState('')
 
-    const [lastnameSignUp, setLastnameSignUp] = useState("benslah")
+    const [lastnameSignUp, setLastnameSignUp] = useState("hadef")
     const [errorLN, setErrorLN] = useState('')
 
-    const [emailSignUp, setEmailSignUp] = useState("mehdi@gmail.com")
+    const [emailSignUp, setEmailSignUp] = useState("amine@gmail.com")
     const [errorEM, setErrorEM] = useState('')
 
-    const [passwordSignUp, setPasswordSignUp] = useState("Jesuisunpetitcon@0")
+    const [passwordSignUp, setPasswordSignUp] = useState("Amine1234@")
     const [errorPW, setErrorPW] = useState('')
 
-    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Jesuisunpetitcon@0")
+    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Amine1234@")
     const [errorCPW, setCPW] = useState('')
 
-    const [descriptionSignUp, setDescriptionSignUp] = useState("je suis un petit con")
+    const [descriptionSignUp, setDescriptionSignUp] = useState("une super description")
     const [errorDSC, setErrorDSC] = useState('')
 
-    const [jobSignUp, setJobSignUp] = useState("petit con")
+    const [jobSignUp, setJobSignUp] = useState("dev")
     const [errorJb, setErrorJb] = useState('')
 
     const [roleSignUp, setRoleSignUp] = useState("1")
@@ -32,12 +32,6 @@ function ModalSignUp(props){
 
     const [errorUE, setErrorUE] = useState('')
 
-
-    const config = {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }
     const handleSubmit = (event)=>{
         event.preventDefault()
         if(passwordSignUp != confirmePasswordSignUp){
@@ -64,7 +58,7 @@ function ModalSignUp(props){
            
            axios(config)
            .then(function (response) {
-             console.log(JSON.stringify(response.data));
+                props.handleCloseSignUP()
            })
            .catch(function (error) {
                 if(error.response.data.errors.includes("le firstname doit contenir que des lettre!")){setErrorFN("le firstname doit contenir que des lettre!")}
