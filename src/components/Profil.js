@@ -10,7 +10,7 @@ import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 
 function Profil(){
     const config = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
-    const mentors = useState({})
+    const [mentors, setMentors] = useState({})
     const [isVisible, setIsVisible] = useState()
     var classNameIcon = "iconSideBar"
     var classNameSideBar = "sideBar"
@@ -26,7 +26,6 @@ function Profil(){
     }
 
     useEffect(()=>{
-        var token =  localStorage.getItem('token')
         var data = qs.stringify({
             'token': localStorage.getItem('token')
            });
@@ -41,13 +40,14 @@ function Profil(){
            
            axios(config)
            .then(function (response) {
-             console.log(response.data)
+              setMentors(response.data.data)
+              console.log(mentors)
            })
            .catch(function (error) {
              console.log(error.response);
            });
            
-    })
+    }, [])
     return (
         <div>
             <div className={classNameBurn}></div>
