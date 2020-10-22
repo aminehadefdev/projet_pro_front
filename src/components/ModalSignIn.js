@@ -12,6 +12,8 @@ function ModalSignIn(props){
     const [passwordSignIn, setPasswordSignIn] = useState("Bastoz@@@000")
     const [errorPW, setErrorPW] = useState('')
 
+    const [error, setError] = useState('')
+
     const [redirect, setRedirect] = useState(false)
 
     const handleSubmit = (event)=>{
@@ -40,7 +42,7 @@ function ModalSignIn(props){
 
             if(error.response.data.errors.includes("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")){setErrorPW("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")}
             if(error.response.data.errors.includes("le champ password est obligatoir!")){setErrorPW("le champ password est obligatoir!")}
-
+            if(error.response.data.errors.includes("votre dossier est en cour de traitement!")){setError("votre dossier est en cour de traitement!")}
             //if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
         });
     }
@@ -48,6 +50,9 @@ function ModalSignIn(props){
         <Modal show={props.showSignIn} onHide={props.handleCloseSignIn}>
             <Modal.Header closeButton>
                 <Modal.Title>SignIn</Modal.Title>
+                {error != "" ?
+                    <div class="alert alert-danger" role="alert">{error}</div> 
+                : null}
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>

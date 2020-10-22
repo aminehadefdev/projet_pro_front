@@ -7,7 +7,7 @@ function Temoignage(props){
     const [Temoignage, setTemoignage] = useState(false);
     const handleCloseTemoignage = () => setTemoignage(false);
     const handleShowTemoignage = () => setTemoignage(true);
-
+    console.log(props)
     return (
         <div className="item">
             <img
@@ -15,11 +15,11 @@ function Temoignage(props){
                 src="/assets/images/BP.png"
                 onClick={handleShowTemoignage}
             />
-            <img className="img" src={props.src} />
+            <img className="img" src={"http://localhost:8000/static/" + props.video.image} />
             <div>
-                <p>{props.personne}</p>
-                <p>{props.job}</p>
-                <p>Inscrite en tant que {props.role}</p>
+                <p>{props.video.name} {props.video.age} ans</p>
+                <p>{props.video.job}</p>
+                <p>Inscrite en tant que {props.video.role == 1 ? 'mentor': "mentorer"}</p>
             </div>
 
             <Modal show={Temoignage} onHide={handleCloseTemoignage}>
@@ -28,7 +28,7 @@ function Temoignage(props){
                     <Iframe
                         width="100%"
                         height="400px"
-                        src={"https://www.youtube.com/embed/" + props.videoId}
+                        src={props.video.path}
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen
