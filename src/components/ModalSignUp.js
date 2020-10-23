@@ -15,11 +15,14 @@ function ModalSignUp(props){
     const [emailSignUp, setEmailSignUp] = useState("amine@gmail.com")
     const [errorEM, setErrorEM] = useState('')
 
-    const [passwordSignUp, setPasswordSignUp] = useState("Amine1234@")
+    const [passwordSignUp, setPasswordSignUp] = useState("Bastoz@@@000")
     const [errorPW, setErrorPW] = useState('')
 
-    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Amine1234@")
+    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Bastoz@@@000")
     const [errorCPW, setCPW] = useState('')
+
+    const [photoProfile, setPhotoProfile] = useState(null)
+    const [errPH, setErrPH] = useState('')
 
     const [descriptionSignUp, setDescriptionSignUp] = useState("une super description")
     const [errorDSC, setErrorDSC] = useState('')
@@ -38,23 +41,24 @@ function ModalSignUp(props){
             setCPW('le champ password doit corespondre avec le champ comfirmpasswor!')
             return false
         }
-        var data = qs.stringify({
-                firstname: firstnameSignUp,
-                lastname: lastnameSignUp,
-                email: emailSignUp,
-                password: passwordSignUp,
-                description: descriptionSignUp,
-                job: jobSignUp,
-                role: roleSignUp,
-           });
-           var config = {
-             method: 'post',
-             url: 'http://localhost:8000/user/register',
-             headers: { 
-               'Content-Type': 'application/x-www-form-urlencoded'
-             },
-             data : data
-           };
+        var data = new FormData()
+        
+        data.append('firstname', firstnameSignUp)
+        data.append('lastname', lastnameSignUp)
+        data.append('email', emailSignUp)
+        data.append('password', passwordSignUp)
+        data.append('description', descriptionSignUp)
+        data.append('job', jobSignUp)
+        data.append('role', roleSignUp)
+        data.append("photoProfile", photoProfile)
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8000/user/register',
+            headers: { 
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data : data
+        };
            
            axios(config)
            .then(function (response) {
@@ -82,6 +86,10 @@ function ModalSignUp(props){
                 if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
            });
     }
+    function handleChangeImage(event){
+        setPhotoProfile(event.target.files[0])
+    }
+    
     return(
         <Modal show={props.showSignUP} onHide={props.handleCloseSignUP}>
             <Modal.Header closeButton>
@@ -152,6 +160,16 @@ function ModalSignUp(props){
                             </Form.Group>
                         </Col>
                     </Row>
+                    <Form.Group controlId="formBasicImage">
+                        <Form.Label>photo profile</Form.Label>
+                        <Form.File
+                            onChange={handleChangeImage}
+                            id="file"
+                            name="photoProfile"
+                            accept="image/png, image/jpeg"
+                        />
+                        
+                    </Form.Group>
                     <Form.Group controlId="Description">
                         <Form.Label>description</Form.Label>
                         <Form.Control

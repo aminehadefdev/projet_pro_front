@@ -14,7 +14,6 @@ function MainHome(){
     axios(config)
     .then(function (response) {
         setVideos(response.data.videos)
-        console.log(response.data.videos)
     })
     .catch(function (error) {
         console.log(error);

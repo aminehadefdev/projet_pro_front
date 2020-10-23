@@ -7,7 +7,6 @@ function Temoignage(props){
     const [Temoignage, setTemoignage] = useState(false);
     const handleCloseTemoignage = () => setTemoignage(false);
     const handleShowTemoignage = () => setTemoignage(true);
-    console.log(props)
     return (
         <div className="item">
             <img

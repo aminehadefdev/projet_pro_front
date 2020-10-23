@@ -82,100 +82,57 @@ footer{
     height: 60px;
 }
 
-.container-mentor{
-    margin-top: 30px;
-}
-
-.container-mentor .item{
-    background-color: white;
+.container-menu{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: red;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
-.container-mentor img{
-    width: 100px;
-    height: 90px;
+.sidebar{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
+.ButtonMenu{
+    color: white;
+    font-size: 3em;
+}
+
+.user img{
+    width: 65px;
+    height: 65px;
     border-radius: 100%;
 }
 
-.sideBar{
-    width: 0vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-}
-.iconSideBar{
-    position: relative;
-    right: 0vw;
+.user {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.animVisibleIconeSideBar{
-    animation-duration: .6s;
-    animation-name: animVisibleIconeSideBar;
-    animation-fill-mode: both;
+.footerSideBar{
+    justify-self: flex-end;
 }
 
-@keyframes animVisibleIconeSideBar{
-    from{
-        right: 0vw;
-    }to{
-        right: 25vw;
-    }
+.container-btn{
+    display: flex;
+    flex-direction: column;
 }
-
-.animHiddenIconeSideBar{
-    animation-duration: .6s;
-    animation-name: animHiddenIconeSideBar;
-    animation-fill-mode: both;
+.container-btn button{
+    margin-bottom: 10px;
 }
-
-@keyframes animHiddenIconeSideBar{
-    from{
-        right: 25vw;
-    }to{
-        right: 0vw;
-    }
-}
-
-.animVisibleSideBar{
-    animation-duration: .6s;
-    animation-name: animVisibleSideBar;
-    animation-fill-mode: both;
-}
-
-@keyframes animVisibleSideBar{
-    from{
-        width: 0vw;
-    }to{
-        width: 30vw;
-    }
-}
-
-.animHiddenSideBar{
-    animation-duration: .6s;
-    animation-name: animHiddenSideBar;
-    animation-fill-mode: both;
-}
-
-@keyframes animHiddenSideBar{
-    from{
-        width: 30vw;
-    }to{
-        width: 0vw;
-    }
-}
-
-.burn{
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #b2b2b26e;
-}
-.burn{
-    background-color: #b2b2b26e!important;
-}
+#file{
+    border: 1px solid #ced4da;
+    width: 100%;
+    border-radius: 3px;
+  }

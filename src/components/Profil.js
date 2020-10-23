@@ -4,86 +4,66 @@ import qs from 'querystring'
 import { Form } from 'react-bootstrap';
 import {Link} from 'react-router-dom'
 
+import { ProSidebar, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 
 function Profil(){
-    const config = {headers: {'Content-Type': 'application/x-www-form-urlencoded'}}
-    const [mentors, setMentors] = useState({})
-    const [isVisible, setIsVisible] = useState()
-    var classNameIcon = "iconSideBar"
-    var classNameSideBar = "sideBar"
-    var classNameBurn = ""
-    if(isVisible == true){
-      classNameIcon += " animVisibleIconeSideBar"
-      classNameSideBar += " animVisibleSideBar"
-      classNameBurn += " burn"
-    }else if(isVisible == false){
-      classNameIcon += " animHiddenIconeSideBar"
-      classNameSideBar += " animHiddenSideBar"
-      classNameBurn = "form-control"
-    }
-
-    useEffect(()=>{
-        var data = qs.stringify({
-            'token': localStorage.getItem('token')
-           });
-           var config = {
-             method: 'get',
-             url: 'http://localhost:8000/user/get/mentors?token='+localStorage.getItem('token'),
-             headers: { 
-               'Content-Type': 'application/x-www-form-urlencoded'
-             },
-             body : data
-           };
-           
-           axios(config)
-           .then(function (response) {
-              setMentors(response.data.data)
-              console.log(mentors)
-           })
-           .catch(function (error) {
-             console.log(error.response);
-           });
-           
-    }, [])
-    return (
-        <div>
-            <div className={classNameBurn}></div>
-            <div className="header">
-              <header className="container">
+    const [show, setShow] = useState(true)
+    const [user, setUser] = useState(qs.parse(localStorage.getItem('user')))
+    console.log(user)
+    return(
+      <div>
+        <div className="header">
+          <header className="container">
+            <div>
+              <nav className="navbar container-fluid">
+                <Link to="/">
+                  <img   width="60" height="60" src="/assets/images/logo.png" className="d-inline-block align-top" alt="" />
+                </Link>
+                <Form>
+                  <Form.Control  placeholder="Search" />
+                </Form>
                 <div>
-                  <nav className="navbar container-fluid">
-                      <Link to="/">
-                          <img src="/assets/images/logo.png" width="60" height="60" className="d-inline-block align-top" alt="" />
-                      </Link>
-                      <Form>
-                        <Form.Control className={classNameBurn} placeholder="Search" />
-                      </Form>
-                      <FontAwesomeIcon
-                        onClick={()=>{setIsVisible(!isVisible)}}
-                        className={classNameIcon}
-                        size="2x"
-                        icon={faBars}
-                      />
-                  </nav>
+
                 </div>
-              </header>
+
+              </nav>
             </div>
-            <main>
-              <div className="container-mentor container">
-                <div className="item">
-                  <img src="/assets/images/photo2.jpg" />
-                  <p>Mathieu</p>
-                </div>
-              </div>
-            </main>
-            <footer></footer>
-            <div className={classNameSideBar}>
-              
-            </div>
+          </header>
         </div>
+        <div className="container-menu">
+          <ProSidebar collapsed={show}>
+            <div className="sidebar">
+              <div className="headerSideBar">
+                <SidebarHeader>
+                  <FontAwesomeIcon size="2x" icon={faBars} onClick={()=>{ setShow(!show)}} className="ButtonMenu" />
+                </SidebarHeader>
+              </div>
+              <div className="mainSideBar">
+                <SidebarContent className="user">
+                  <img src={"http://localhost:8000/static/" + user.photoProfile} />
+                  <p>{user.firstname}</p>
+                  <p>{user.lastname}</p>
+                  <p>{user.age} ans</p>
+                  <p>{user.job}</p>
+                </SidebarContent>
+              </div>
+              <div className='footerSideBar'>
+                <SidebarFooter>
+                  <div className="container-btn">
+                    <button className="btn btn-primary">CRUD</button>
+                    <button className="btn btn-primary">logout</button>
+                  </div>
+                </SidebarFooter>
+              </div>
+            </div>
+          </ProSidebar>
+        </div>
+      </div>
     )
 }
 

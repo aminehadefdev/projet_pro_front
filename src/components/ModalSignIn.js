@@ -32,17 +32,21 @@ function ModalSignIn(props){
         };
         axios(config)
         .then(function (response) {
+            console.log(response)
             localStorage.setItem("token", response.data.token)
+            localStorage.setItem("user", qs.stringify(response.data.user))
             setRedirect(true)
         })
         .catch(function (error) {
             console.log(error.response)
-            if(error.response.data.errors.includes("le champ email doit etre valide exemple: toto@gmail.com!")){setErrorEM("le champ email doit etre valide exemple: toto@gmail.com!")}
-            if(error.response.data.errors.includes("le champ email est obligatoir!")){setErrorEM("le champ email est obligatoir!")}
-
-            if(error.response.data.errors.includes("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")){setErrorPW("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")}
-            if(error.response.data.errors.includes("le champ password est obligatoir!")){setErrorPW("le champ password est obligatoir!")}
-            if(error.response.data.errors.includes("votre dossier est en cour de traitement!")){setError("votre dossier est en cour de traitement!")}
+            if(error.response != undefined){
+                if(error.response.data.errors.includes("le champ email doit etre valide exemple: toto@gmail.com!")){setErrorEM("le champ email doit etre valide exemple: toto@gmail.com!")}
+                if(error.response.data.errors.includes("le champ email est obligatoir!")){setErrorEM("le champ email est obligatoir!")}
+    
+                if(error.response.data.errors.includes("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")){setErrorPW("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")}
+                if(error.response.data.errors.includes("le champ password est obligatoir!")){setErrorPW("le champ password est obligatoir!")}
+                if(error.response.data.errors.includes("votre dossier est en cour de traitement!")){setError("votre dossier est en cour de traitement!")}
+            }
             //if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
         });
     }
