@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './components/Home'
 import Profil from './components/Profil'
+import Search from './components/Search'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Route path="/" exact component={Home} />
         <Route path="/profil" exact component={Profil} />
+        <Route path="/search" exact component={Search} />
       </Router>
     </div>
   );

@@ -136,3 +136,87 @@ footer{
     width: 100%;
     border-radius: 3px;
   }
+.container-input {
+    width: 60%;
+    max-width: 300px;
+
+    display: flex;
+}
+
+.searchBtn{
+    border: none;
+    background-color: white;
+}
+
+.searchBtn svg{
+    color: gray;
+    font-size: 2em;
+}
+.main-profile{
+
+}
+.container-mentores{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    cursor: pointer;
+    align-items: center;
+    overflow-x: scroll;
+    width: 86%;
+}
+
+.item-mentor{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item-mentor img{
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+}
+
+.container-avantages{
+    width: 86%;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.item-avantage{
+    width: 200px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.item-avantage img{
+    width: 200px;
+}
+
+.item-avantage p{
+    width: 200px;
+    word-break: break-all;
+    font-size: 1rem;
+}
+
+.container-search{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.item-search{
+    width: 200px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.item-search img{
+    width: 200px;
+    border-radius: 5px;
+}
+.item-search p{
+    width: 200px;
+    word-break: break-all;
+    font-size: 1rem;
+}
