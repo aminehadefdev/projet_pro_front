@@ -203,20 +203,27 @@ footer{
 .container-search{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 .item-search{
-    width: 200px;
-    margin-right: 10px;
-    margin-top: 10px;
     cursor: pointer;
+    border: solid grey 1px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin-top: 10px;
+    height: -webkit-fill-available;
 }
 .item-search img{
-    width: 200px;
-    border-radius: 5px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0;
 }
 .item-search p{
-    width: 200px;
+    width: 90%;
     word-break: break-all;
     font-size: 1rem;
+    margin-left: 10px;
 }
