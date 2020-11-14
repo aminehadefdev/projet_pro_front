@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import {BrowserRouter as Router, Redirect} from "react-router-dom"
 
 import qs from 'qs'
+
+import HeaderProfil from './HeaderProfil'
+import SideBar from './SideBar'
+
 function Search(){
     const [users, setUsers] = useState(Object.values(qs.parse(localStorage.getItem('searche'))))
     const [targetId, setTargetId] = useState(null)
     const [redirect, setRedirect] = useState(false)
-    const [redirectProfil, setRedirectProfil] = useState(false)
 
     return (
         <div>
-            <button onClick={()=>{
-                setRedirectProfil(true)
-            }}>profil</button>
-            {redirectProfil === true? <Redirect exact to={"/profil/"} />:null}
+            <HeaderProfil />
+            <SideBar />
             <div className="container-search">
                 {users.map(user=>{
                     return (
