@@ -2,38 +2,43 @@ import React, {useState} from 'react';
 import axios from 'axios'
 import qs from 'querystring'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 function ModalSignUp(props){
 
     const [firstnameSignUp, setFirstnameSignUp] = useState("amine")
-    const [errorFN, setErrorFN] = useState('')
+    const [errorFN, setErrorFN] = useState("")
 
     const [lastnameSignUp, setLastnameSignUp] = useState("hadef")
-    const [errorLN, setErrorLN] = useState('')
+    const [errorLN, setErrorLN] = useState("")
 
     const [emailSignUp, setEmailSignUp] = useState("amine@gmail.com")
-    const [errorEM, setErrorEM] = useState('')
+    const [errorEM, setErrorEM] = useState("")
 
     const [passwordSignUp, setPasswordSignUp] = useState("Bastoz@@@000")
-    const [errorPW, setErrorPW] = useState('')
+    const [errorPW, setErrorPW] = useState("")
 
     const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Bastoz@@@000")
-    const [errorCPW, setCPW] = useState('')
+    const [errorCPW, setCPW] = useState("")
 
     const [photoProfile, setPhotoProfile] = useState(null)
-    const [errPH, setErrPH] = useState('')
+    const [errPH, setErrPH] = useState("")
 
     const [descriptionSignUp, setDescriptionSignUp] = useState("une super description")
-    const [errorDSC, setErrorDSC] = useState('')
+    const [errorDSC, setErrorDSC] = useState("")
 
     const [jobSignUp, setJobSignUp] = useState("dev")
-    const [errorJb, setErrorJb] = useState('')
+    const [errorJb, setErrorJb] = useState("")
 
     const [roleSignUp, setRoleSignUp] = useState("1")
-    const [errorRL, setErrorRl] = useState('')
+    const [errorRL, setErrorRl] = useState("")
 
-    const [errorUE, setErrorUE] = useState('')
+    const [age, setAge] = useState(new Date())
+    const [errorAge, setErrorAge] = useState("")
+
+    const [errorUE, setErrorUE] = useState("")
 
     const handleSubmit = (event)=>{
         event.preventDefault()
@@ -51,6 +56,7 @@ function ModalSignUp(props){
         data.append('job', jobSignUp)
         data.append('role', roleSignUp)
         data.append("photoProfile", photoProfile)
+        data.append("age", age)
         var config = {
             method: 'post',
             url: 'http://localhost:8000/user/register',
@@ -124,6 +130,17 @@ function ModalSignUp(props){
                             </Form.Group>
                         </Col>
                     </Row>
+                    <div className="containe-age">
+                        <Form.Label>Date de naissance</Form.Label>
+                        <DatePicker
+                            className="form-control"
+                            dateFormat="dd/MM/yyyy"
+                            selected={age}
+                            onChange={(date) => {
+                                setAge(new Date(date))
+                            }}
+                        />
+                    </div>
                     <Form.Group controlId="Email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control

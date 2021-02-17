@@ -7,6 +7,7 @@ import Home from './home/Home'
 import Profil from './profil/Profil'
 import Search from './profil/Search'
 import ProfileTarget from './profil/ProfileTarget'
+import VerifyEmail from "./home/VerifyEmail"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/profil" exact component={Profil} />
         <Route path="/search" exact component={Search} />
         <Route path="/search/:id" exact component={ProfileTarget} />
+        <Route path="/verify/email/:slug" exact component={VerifyEmail} />
       </Router>
     </div>
   );

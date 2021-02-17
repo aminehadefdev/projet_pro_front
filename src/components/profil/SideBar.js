@@ -34,8 +34,8 @@ function SideBar(){
             <div className='footerSideBar'>
               <SidebarFooter>
                 <div className="container-btn">
-                  <button className="btn btn-primary">CRUD</button>
-                  <button className="btn btn-primary">logout</button>
+                  <button className="btn btn-outline-dark btn-nav btn-side-bar">CRUD</button>
+                  <button className="btn btn-outline-dark btn-nav btn-side-bar">logout</button>
                 </div>
               </SidebarFooter>
             </div>
