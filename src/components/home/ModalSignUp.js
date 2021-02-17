@@ -8,31 +8,31 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function ModalSignUp(props){
 
-    const [firstnameSignUp, setFirstnameSignUp] = useState("amine")
+    const [firstname, setFirstname] = useState("amine")
     const [errorFN, setErrorFN] = useState("")
 
-    const [lastnameSignUp, setLastnameSignUp] = useState("hadef")
+    const [lastname, setLastname] = useState("hadef")
     const [errorLN, setErrorLN] = useState("")
 
-    const [emailSignUp, setEmailSignUp] = useState("amine@gmail.com")
+    const [email, setEmail] = useState("amine@gmail.com")
     const [errorEM, setErrorEM] = useState("")
 
-    const [passwordSignUp, setPasswordSignUp] = useState("Bastoz@@@000")
+    const [password, setPassword] = useState("Bastoz@@@000")
     const [errorPW, setErrorPW] = useState("")
 
-    const [confirmePasswordSignUp, setConfirmePasswordSignUp] = useState("Bastoz@@@000")
+    const [confirmePassword, setConfirmePassword] = useState("Bastoz@@@000")
     const [errorCPW, setCPW] = useState("")
 
     const [photoProfile, setPhotoProfile] = useState(null)
     const [errPH, setErrPH] = useState("")
 
-    const [descriptionSignUp, setDescriptionSignUp] = useState("une super description")
+    const [description, setDescription] = useState("une super description")
     const [errorDSC, setErrorDSC] = useState("")
 
-    const [jobSignUp, setJobSignUp] = useState("dev")
+    const [job, setJob] = useState("dev")
     const [errorJb, setErrorJb] = useState("")
 
-    const [roleSignUp, setRoleSignUp] = useState("1")
+    const [role, setRole] = useState("1")
     const [errorRL, setErrorRl] = useState("")
 
     const [age, setAge] = useState(new Date())
@@ -42,19 +42,19 @@ function ModalSignUp(props){
 
     const handleSubmit = (event)=>{
         event.preventDefault()
-        if(passwordSignUp != confirmePasswordSignUp){
+        if(password != confirmePassword){
             setCPW('le champ password doit corespondre avec le champ comfirmpasswor!')
             return false
         }
         var data = new FormData()
         
-        data.append('firstname', firstnameSignUp)
-        data.append('lastname', lastnameSignUp)
-        data.append('email', emailSignUp)
-        data.append('password', passwordSignUp)
-        data.append('description', descriptionSignUp)
-        data.append('job', jobSignUp)
-        data.append('role', roleSignUp)
+        data.append('firstname', firstname)
+        data.append('lastname', lastname)
+        data.append('email', email)
+        data.append('password', password)
+        data.append('description', description)
+        data.append('job', job)
+        data.append('role', role)
         data.append("photoProfile", photoProfile)
         data.append("age", age)
         var config = {
@@ -68,7 +68,7 @@ function ModalSignUp(props){
            
            axios(config)
            .then(function (response) {
-                props.handleCloseSignUP()
+                props.handleClose()
            })
            .catch(function (error) {
                 if(error.response.data.errors.includes("le firstname doit contenir que des lettre!")){setErrorFN("le firstname doit contenir que des lettre!")}
@@ -97,7 +97,7 @@ function ModalSignUp(props){
     }
     
     return(
-        <Modal show={props.showSignUP} onHide={props.handleCloseSignUP}>
+        <Modal show={props.show} onHide={props.handleClose}>
             <Modal.Header closeButton>
                 <Modal.Title>SignUP</Modal.Title>
             </Modal.Header>
@@ -109,8 +109,8 @@ function ModalSignUp(props){
                             <Form.Group controlId="Firstname">
                                 <Form.Label>Firstname</Form.Label>
                                 <Form.Control
-                                    value={firstnameSignUp}
-                                    onChange={(event)=>{setFirstnameSignUp(event.currentTarget.value)}}
+                                    value={firstname}
+                                    onChange={(event)=>{setFirstname(event.currentTarget.value)}}
                                     type="text"
                                     placeholder="Enter Firstname"
                                 />
@@ -121,8 +121,8 @@ function ModalSignUp(props){
                             <Form.Group controlId="Lastname">
                                 <Form.Label>Lastname</Form.Label>
                                 <Form.Control
-                                    value={lastnameSignUp}
-                                    onChange={(event)=>{setLastnameSignUp(event.currentTarget.value)}}
+                                    value={lastname}
+                                    onChange={(event)=>{setLastname(event.currentTarget.value)}}
                                     type="text"
                                     placeholder="Enter Lastname"
                                 />
@@ -144,8 +144,8 @@ function ModalSignUp(props){
                     <Form.Group controlId="Email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control
-                            value={emailSignUp}
-                            onChange={(event)=>{setEmailSignUp(event.currentTarget.value)}}
+                            value={email}
+                            onChange={(event)=>{setEmail(event.currentTarget.value)}}
                             type="email"
                             placeholder="Enter Email"
                         />
@@ -156,8 +156,8 @@ function ModalSignUp(props){
                             <Form.Group controlId="Password">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control
-                                    value={passwordSignUp}
-                                    onChange={(event)=>{setPasswordSignUp(event.currentTarget.value)}}
+                                    value={password}
+                                    onChange={(event)=>{setPassword(event.currentTarget.value)}}
                                     type="password"
                                     placeholder="Enter Password"
                                 />
@@ -168,8 +168,8 @@ function ModalSignUp(props){
                             <Form.Group controlId="ConfirmePassword">
                                 <Form.Label>Confirme password</Form.Label>
                                 <Form.Control
-                                    value={confirmePasswordSignUp}
-                                    onChange={(event)=>{setConfirmePasswordSignUp(event.currentTarget.value)}}
+                                    value={confirmePassword}
+                                    onChange={(event)=>{setConfirmePassword(event.currentTarget.value)}}
                                     type="password"
                                     placeholder="ConfirmePassword"
                                 />
@@ -190,8 +190,8 @@ function ModalSignUp(props){
                     <Form.Group controlId="Description">
                         <Form.Label>description</Form.Label>
                         <Form.Control
-                            value={descriptionSignUp}
-                            onChange={(event)=>{setDescriptionSignUp(event.currentTarget.value)}}
+                            value={description}
+                            onChange={(event)=>{setDescription(event.currentTarget.value)}}
                             placeholder="Enter your description"
                             as="textarea"
                             rows="3"
@@ -203,8 +203,8 @@ function ModalSignUp(props){
                             <Form.Group controlId="Job">
                                 <Form.Label>Job</Form.Label>
                                 <Form.Control
-                                    value={jobSignUp}
-                                    onChange={(event)=>{setJobSignUp(event.currentTarget.value)}}
+                                    value={job}
+                                    onChange={(event)=>{setJob(event.currentTarget.value)}}
                                     type="text"
                                     placeholder="job"
                                 />
@@ -214,7 +214,7 @@ function ModalSignUp(props){
                         <Col>
                             <Form.Group controlId="Role">
                                 <Form.Label>Role</Form.Label>
-                                <Form.Control onChange={(event)=>{setRoleSignUp(event.currentTarget.value)}} as="select">
+                                <Form.Control onChange={(event)=>{setRole(event.currentTarget.value)}} as="select">
                                     <option value="1">Mentor(e)</option>
                                     <option value="2">Mentoré(e)</option>
                                 </Form.Control>
@@ -223,7 +223,7 @@ function ModalSignUp(props){
                         </Col>
                     </Row>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={props.handleCloseSignUP}>Close</Button>
+                        <Button variant="secondary" onClick={props.handleClose}>Close</Button>
                         <Button variant="primary" type="submit">Submit</Button>
                     </Modal.Footer>
                 </Form>
