@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function VerifyEmail(){
     var { slug } = useParams()
-    function confiremail(){
+    function confirEmail(){
         var config = {
             method: 'post',
             url: 'http://localhost:8000/verify/email',
@@ -24,7 +24,7 @@ function VerifyEmail(){
         });
       }
     useEffect(()=>{
-        confiremail()
+        confirEmail()
     }
     ,[])
     return(

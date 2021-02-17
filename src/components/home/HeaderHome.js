@@ -22,7 +22,9 @@ function HeaderHome(){
                 </Link>
                 <div>
                     <button onClick={handleShowSignIn} type="button" className="btn btn-outline-dark btn-nav">SignIn</button>
-                    <button onClick={handleShowSignUP} type="button" className="btn btn-outline-dark btn-nav">SignUP</button>
+                    <button onClick={()=>{
+                        handleShowSignUP()
+                    }} type="button" className="btn btn-outline-dark btn-nav">SignUP</button>
                 </div>
             </nav>
             <ModalSignUp showSignUP={showSignUP} handleCloseSignUP={handleCloseSignUP} />

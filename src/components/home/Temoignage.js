@@ -14,11 +14,11 @@ function Temoignage(props){
                 src="/assets/images/BP.png"
                 onClick={handleShowTemoignage}
             />
-            <img className="img" src={"http://localhost:8000/static/" + props.video.image} />
+            <img alt="aa" className="img" src={"http://localhost:8000/static/" + props.video.image} />
             <div>
                 <p>{props.video.name} {props.video.age} ans</p>
                 <p>{props.video.job}</p>
-                <p>Inscrite en tant que {props.video.role == 1 ? 'mentor': "mentorer"}</p>
+                <p>Inscrite en tant que {props.video.role === 1 ? 'mentor': "mentorer"}</p>
             </div>
 
             <Modal show={Temoignage} onHide={handleCloseTemoignage}>

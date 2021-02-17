@@ -68,7 +68,7 @@ function ModalSignUp(props){
            
            axios(config)
            .then(function (response) {
-                props.handleClose()
+                props.handleCloseSignUP()
            })
            .catch(function (error) {
                 if(error.response.data.errors.includes("le firstname doit contenir que des lettre!")){setErrorFN("le firstname doit contenir que des lettre!")}
@@ -79,6 +79,8 @@ function ModalSignUp(props){
 
                 if(error.response.data.errors.includes("le champ email doit etre valide exemple: toto@gmail.com!")){setErrorEM("le champ email doit etre valide exemple: toto@gmail.com!")}
                 if(error.response.data.errors.includes("le champ email est obligatoire!")){setErrorEM("le champ email est obligatoire!")}
+                if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
+
 
                 if(error.response.data.errors.includes("le champ password doit contenir au minimum 8 caracteres dont au moins une majuscule une minuscule et un caracter special!")){setErrorPW("le champ password doit contenir au minimum 8 caracteres dont au moins une majuscule une minuscule et un caracter special!")}
                 if(error.response.data.errors.includes("le champ password est obligatoire!")){setErrorPW("le champ password est obligatoire!")}
@@ -87,9 +89,10 @@ function ModalSignUp(props){
 
                 if(error.response.data.errors.includes("le champ role est obligatoire!")){setErrorRl("le champ role est obligatoire!")}
 
-                if(error.response.data.errors.includes("le champ role est obligatoire!")){setErrorJb("le champ job est obligatoire!")}
+                if(error.response.data.errors.includes("le champ job est obligatoire!")){setErrorJb("le champ job est obligatoire!")}
 
-                if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
+                if(error.response.data.errors.includes("le champ age est obligatoire!")){setErrorAge("le champ age est obligatoire!")}
+
            });
     }
     function handleChangeImage(event){
@@ -97,7 +100,7 @@ function ModalSignUp(props){
     }
     
     return(
-        <Modal show={props.show} onHide={props.handleClose}>
+        <Modal show={props.showSignUP} onHide={props.handleCloseSignUP}>
             <Modal.Header closeButton>
                 <Modal.Title>SignUP</Modal.Title>
             </Modal.Header>
@@ -114,7 +117,7 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="Enter Firstname"
                                 />
-                                {errorFN != '' ? <small style={{color: "red"}} id="emailHelp">{errorFN}</small>:null}
+                                {errorFN !== '' ? <small style={{color: "red"}} id="emailHelp">{errorFN}</small>:null}
                             </Form.Group>
                         </Col>
                         <Col>
@@ -126,7 +129,7 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="Enter Lastname"
                                 />
-                                {errorLN != '' ? <small style={{color: "red"}} id="emailHelp">{errorLN}</small>:null}
+                                {errorLN !== '' ? <small style={{color: "red"}} id="emailHelp">{errorLN}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -140,6 +143,7 @@ function ModalSignUp(props){
                                 setAge(new Date(date))
                             }}
                         />
+                        {errorAge !== '' ? <small style={{color: "red"}} id="veillez rensegnier votre date de naissance!">{errorLN}</small>:null}
                     </div>
                     <Form.Group controlId="Email">
                         <Form.Label>Email</Form.Label>
@@ -149,7 +153,7 @@ function ModalSignUp(props){
                             type="email"
                             placeholder="Enter Email"
                         />
-                        {errorEM != '' ? <small style={{color: "red"}} id="emailHelp">{errorEM}</small>:null}
+                        {errorEM !== '' ? <small style={{color: "red"}} id="emailHelp">{errorEM}</small>:null}
                     </Form.Group>
                     <Row>
                         <Col>
@@ -173,7 +177,7 @@ function ModalSignUp(props){
                                     type="password"
                                     placeholder="ConfirmePassword"
                                 />
-                                {errorCPW != '' ? <small style={{color: "red"}} id="emailHelp">{errorCPW}</small>:null}
+                                {errorCPW !== '' ? <small style={{color: "red"}} id="emailHelp">{errorCPW}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>
@@ -196,7 +200,7 @@ function ModalSignUp(props){
                             as="textarea"
                             rows="3"
                         />
-                        {errorDSC != '' ? <small style={{color: "red"}} id="emailHelp">{errorDSC}</small>:null}
+                        {errorDSC !== '' ? <small style={{color: "red"}} id="emailHelp">{errorDSC}</small>:null}
                     </Form.Group>
                     <Row>
                         <Col>
@@ -208,7 +212,7 @@ function ModalSignUp(props){
                                     type="text"
                                     placeholder="job"
                                 />
-                                {errorJb != '' ? <small style={{color: "red"}} id="emailHelp">{errorJb}</small>:null}
+                                {errorJb !== '' ? <small style={{color: "red"}} id="emailHelp">{errorJb}</small>:null}
                             </Form.Group>
                         </Col>
                         <Col>
@@ -218,7 +222,7 @@ function ModalSignUp(props){
                                     <option value="1">Mentor(e)</option>
                                     <option value="2">Mentoré(e)</option>
                                 </Form.Control>
-                                {errorRL != '' ? <small style={{color: "red"}} id="emailHelp">{errorRL}</small>:null}
+                                {errorRL !== '' ? <small style={{color: "red"}} id="emailHelp">{errorRL}</small>:null}
                             </Form.Group>
                         </Col>
                     </Row>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import {BrowserRouter as Router, Redirect} from "react-router-dom"
+import React, {useState } from 'react'
+import {BrowserRouter as Redirect} from "react-router-dom" //Router,
 
 import qs from 'qs'
 

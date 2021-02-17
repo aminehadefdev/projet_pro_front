@@ -7,7 +7,7 @@ import HeaderProfil from './HeaderProfil'
 import SideBar from './SideBar'
 
 function Profil(){
-    const [user, setUser] = useState(qs.parse(localStorage.getItem('user')))
+    const [user] = useState(qs.parse(localStorage.getItem('user')))
     return(
       <div>
         <HeaderProfil />

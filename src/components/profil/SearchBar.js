@@ -51,7 +51,7 @@ function SearchBar(){
         }}>
           <FontAwesomeIcon className="iconeSearch" icon={faSearch} />
         </button>
-        {redirect == true? <Redirect exact to="/search" />:null}
+        {redirect === true ? <Redirect exact to="/search" />:null}
       </div>
     )
 }
