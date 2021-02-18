@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import axios from 'axios'
-import qs from 'querystring'
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -57,6 +56,7 @@ function ModalSignUp(props){
         data.append('role', role)
         data.append("photoProfile", photoProfile)
         data.append("age", age)
+
         var config = {
             method: 'post',
             url: 'http://localhost:8000/user/register',
@@ -66,7 +66,7 @@ function ModalSignUp(props){
             data : data
         };
            
-           axios(config)
+        axios(config)
            .then(function (response) {
                 props.handleCloseSignUP()
            })

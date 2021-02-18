@@ -83,7 +83,7 @@ footer{
 }
 
 .container-menu{
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     height: 100%;
@@ -203,6 +203,9 @@ footer{
 .container-search{
     display: flex;
     flex-wrap: wrap;
+    width: 85%;
+    align-items: stretch;
+    justify-content: space-around;
 }
 .item-search{
     cursor: pointer;
@@ -211,9 +214,12 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 200px;
+    width: 45%;
     margin-top: 10px;
     height: -webkit-fill-available;
+    overflow: hidden;
+    max-height: 360px;
+    height: 360px;
 }
 .item-search img{
     width: 100%;
@@ -238,4 +244,56 @@ footer{
 }
 .containe-age .react-datepicker-wrapper .react-datepicker__input-container input{
     width: 100%;
+}
+
+.container-target{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.p1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.p1 button{
+    margin-right: 120px;
+    width: fit-content;
+    height: 40px;
+    color: #343a40!imprtant;
+}
+.p button:hover{
+    color: white!important;
+}
+
+.image-target{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.image-target img{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+.image-target div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.image-target div p{
+    margin: 0;
+}
+
+.p2{
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 10px;
+    align-self: flex-start;
 }

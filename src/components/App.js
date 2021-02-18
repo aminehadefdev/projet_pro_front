@@ -18,6 +18,7 @@ function App() {
         <Route path="/search" exact component={Search} />
         <Route path="/search/:id" exact component={ProfileTarget} />
         <Route path="/verify/email/:slug" exact component={VerifyEmail} />
+        <Route path="/target" exact component={ProfileTarget} />
       </Router>
     </div>
   );

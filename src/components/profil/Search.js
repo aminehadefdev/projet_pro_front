@@ -1,10 +1,10 @@
 import React, {useState } from 'react'
-import {BrowserRouter as Redirect} from "react-router-dom" //Router,
-
-import qs from 'qs'
+import {BrowserRouter as Router, Redirect} from "react-router-dom" //Router,
 
 import HeaderProfil from './HeaderProfil'
 import SideBar from './SideBar'
+
+import qs from 'qs'
 
 function Search(){
     const [users, setUsers] = useState(Object.values(qs.parse(localStorage.getItem('searche'))))
@@ -21,16 +21,15 @@ function Search(){
                         <div onClick={()=>{
                             localStorage.setItem('profilTarget', qs.stringify(user))
                             setRedirect(true)
-                            setTargetId(user.id)
                         }} className="item-search" key={user.id}>
                             <img src={"http://localhost:8000/static/" + user.photoProfile} />
                             <p>{user.firstname}</p>
                             <p>{user.job}</p>
                             <p>{user.description}</p>
-                            {redirect === true? <Redirect exact to={"/search/" + targetId} />:null}
                         </div>
                     )
                 })}
+                {redirect === true ? <Redirect exact to={"/target"} />:null}
             </div>
         </div>
     )

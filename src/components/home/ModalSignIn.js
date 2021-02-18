@@ -12,8 +12,6 @@ function ModalSignIn(props){
     const [passwordSignIn, setPasswordSignIn] = useState("Bastoz@@@000")
     const [errorPW, setErrorPW] = useState('')
 
-    const [error, setError] = useState('')
-
     const [redirect, setRedirect] = useState(false)
 
     const [err, setErr] = useState('')
@@ -40,16 +38,19 @@ function ModalSignIn(props){
             setRedirect(true)
         })
         .catch(function (error) {
-            console.log(error.response)
             if(error.response != undefined){
                 if(error.response.data.errors.includes("le champ email doit etre valide exemple: toto@gmail.com!")){setErrorEM("le champ email doit etre valide exemple: toto@gmail.com!")}
                 if(error.response.data.errors.includes("le champ email est obligatoir!")){setErrorEM("le champ email est obligatoir!")}
     
                 if(error.response.data.errors.includes("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")){setErrorPW("le champ password doit contenire au minimum 8 caractaires dont au mois une majuscule une miniscule et un caractaiter special!")}
                 if(error.response.data.errors.includes("le champ password est obligatoir!")){setErrorPW("le champ password est obligatoir!")}
-                if(error.response.data.errors.includes("votre dossier est en cour de traitement!")){setError("votre dossier est en cour de traitement!")}
 
+                if(error.response.data.errors.includes("votre dossier est en cour de traitement!")){setErr("votre dossier est en cour de traitement!")}
+                if(error.response.data.errors.includes("Informations incorectes")){setErr("Informations incorectes")}
                 if(error.response.data.errors.includes("vous avez etait refuser!")){setErr("vous avez etait refuser!")}
+                if(error.response.data.errors.includes("veuillez confirmet votre email svp!")){setErr("veuillez confirmet votre email svp!")}
+
+
             }
             //if(error.response.data.errors.includes("email deja enregistrer!")){setErrorUE("email deja enregistrer!")}
         });
